@@ -1,5 +1,5 @@
 # DesktopApp
-##SWE Desktop App 
+## SWE Desktop App 
 
 ## Features
 - Note-taking requests
