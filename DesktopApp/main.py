@@ -1,32 +1,45 @@
-from tkinter import *
+import ttkbootstrap as tb
+from ttkbootstrap.constants import *
 from login import LoginPage
+from dashboard import DashboardPage
+from recording import RecordingPage
+from markdown_viewer import MarkdownViewerPage
+from request_page import RequestPage
+from browse_request import BrowseRequestsPage
 
-# Creating class for main app window 
-class App(Tk):
+class App(tb.Window):
     def __init__(self):
-        # Intializing parent Tk class
-        super().__init__()
-
-        # Setting title and  size for app window
+        super().__init__(themename="flatly")  # Try: cosmo, darkly, journal, lumen
         self.title("Relay")
         self.state("zoomed")
 
-        # Creating dictionary to store all screen frames
+        # Shared data
+        self.current_user = None
+        self.transcriptions = []
+        self.requests = []
+
+        #just for style 
+        self.style.configure('.', font=('Helvetica', 14))
+        self.option_add("*TButton.Padding", 10)
+        self.option_add("*TEntry.Font", ("Helvetica", 14))
+
         self.frames = {}
+        for ScreenClass in (
+            LoginPage,
+            DashboardPage,
+            RecordingPage,
+            MarkdownViewerPage,
+            RequestPage,
+            BrowseRequestsPage
+        ):
+            screen = ScreenClass(self)
+            self.frames[ScreenClass.__name__] = screen
+            screen.grid(row=0, column=0, sticky="nsew")
 
-        # Loop to load screen classes
-        for ScreenClass in (LoginPage, ):                       # added ',' to add future screens
-            screen = ScreenClass(self)                          # Create instance of screen
-            self.frames[ScreenClass.__name__] = screen          # Store screen object in dictionary with class name as key
-            screen.grid(row = 0, column = 0, sticky = "nsew")   # Place screen widget in main window using grid layout (nsew makes it fill entire window)
-
-        # Show the login page as the main screen when app is started
         self.show_screen("LoginPage")
 
-    # Function to bring a screen to the front based on name
     def show_screen(self, name):
-        screen = self.frames[name] # Look for screen in dictionary
-        screen.tkraise() # Make selected screen visible
+        self.frames[name].tkraise()
 
 if __name__ == "__main__":
     app = App()
