@@ -2,7 +2,7 @@ import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 from login import LoginPage
 from dashboard import DashboardPage
-from recording import RecordingPage
+#from recording import RecordingPage
 from markdown_viewer import MarkdownViewerPage
 from request_page import RequestPage
 from browse_request import BrowseRequestsPage
@@ -27,7 +27,7 @@ class App(tb.Window):
         for ScreenClass in (
             LoginPage,
             DashboardPage,
-            RecordingPage,
+           # RecordingPage,
             MarkdownViewerPage,
             RequestPage,
             BrowseRequestsPage
