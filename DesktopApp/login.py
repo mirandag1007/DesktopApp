@@ -4,19 +4,25 @@ from ttkbootstrap.constants import *
 class LoginPage(tb.Frame):
     def __init__(self, master):
         super().__init__(master, padding=30)
+        
+      
 
-        tb.Label(self, text="Relay Login", font=("Helvetica", 32, "bold"), bootstyle=PRIMARY).pack(pady=30)
+        # Create a container frame that will be centered
+        container = tb.Frame(self)
+        container.place(relx=0.5, rely=0.5, anchor="center")
 
-        tb.Label(self, text="Username", font=("Helvetica", 16)).pack(pady=(10, 5))
-        self.username_entry = tb.Entry(self, width=35, font=("Helvetica", 14))
+        tb.Label(container, text="Relay Login", font=("Helvetica", 32, "bold"), bootstyle=PRIMARY).pack(pady=30)
+
+        tb.Label(container, text="Username", font=("Helvetica", 16)).pack(pady=(10, 5))
+        self.username_entry = tb.Entry(container, width=35, font=("Helvetica", 14))
         self.username_entry.pack()
 
-        tb.Label(self, text="Password", font=("Helvetica", 16)).pack(pady=(10, 5))
-        self.password_entry = tb.Entry(self, show="*", width=35, font=("Helvetica", 14))
+        tb.Label(container, text="Password", font=("Helvetica", 16)).pack(pady=(10, 5))
+        self.password_entry = tb.Entry(container, show="*", width=35, font=("Helvetica", 14))
         self.password_entry.pack()
 
-        tb.Button(self, text="Login", bootstyle=SUCCESS, width=25, command=self.login).pack(pady=20)
-        tb.Button(self, text="Go to Dashboard", bootstyle=INFO, width=25,
+        tb.Button(container, text="Login", bootstyle=SUCCESS, width=25, command=self.login).pack(pady=20)
+        tb.Button(container, text="Go to Dashboard", bootstyle=INFO, width=25,
                   command=lambda: master.show_screen("DashboardPage")).pack()
 
     def login(self):

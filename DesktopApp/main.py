@@ -2,16 +2,17 @@ import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 from login import LoginPage
 from dashboard import DashboardPage
-from recording import RecordingPage
 from markdown_viewer import MarkdownViewerPage
 from request_page import RequestPage
 from browse_request import BrowseRequestsPage
 
 class App(tb.Window):
     def __init__(self):
-        super().__init__(themename="flatly")  # Try: cosmo, darkly, journal, lumen
+        super().__init__(themename="cosmo")  # Try: cosmo, darkly, journal, lumen
         self.title("Relay")
         self.state("zoomed")
+
+        
 
         # Shared data
         self.current_user = None
@@ -26,8 +27,7 @@ class App(tb.Window):
         self.frames = {}
         for ScreenClass in (
             LoginPage,
-            DashboardPage,
-            RecordingPage,
+            DashboardPage,          
             MarkdownViewerPage,
             RequestPage,
             BrowseRequestsPage
