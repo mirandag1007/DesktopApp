@@ -2,23 +2,24 @@ import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 from login import LoginPage
 from dashboard import DashboardPage
-#from recording import RecordingPage
 from markdown_viewer import MarkdownViewerPage
 from request_page import RequestPage
 from browse_request import BrowseRequestsPage
+from register import RegisterPage
 
 class App(tb.Window):
     def __init__(self):
-        super().__init__(themename="flatly")  # Try: cosmo, darkly, journal, lumen
         self.title("Relay")
         self.state("zoomed")
 
-        # Shared data
+        
+
+        
         self.current_user = None
         self.transcriptions = []
         self.requests = []
 
-        #just for style 
+        
         self.style.configure('.', font=('Helvetica', 14))
         self.option_add("*TButton.Padding", 10)
         self.option_add("*TEntry.Font", ("Helvetica", 14))
@@ -27,7 +28,7 @@ class App(tb.Window):
         for ScreenClass in (
             LoginPage,
             DashboardPage,
-           # RecordingPage,
+            RegisterPage,
             MarkdownViewerPage,
             RequestPage,
             BrowseRequestsPage
@@ -42,5 +43,5 @@ class App(tb.Window):
         self.frames[name].tkraise()
 
 if __name__ == "__main__":
-    app = App()
-    app.mainloop()
+ app = App()
+ App.mainloop()
