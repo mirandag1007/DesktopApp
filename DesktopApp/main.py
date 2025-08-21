@@ -9,17 +9,15 @@ from register import RegisterPage
 
 class App(tb.Window):
     def __init__(self):
+        super().__init__()  # Initialize ttkbootstrap window
+
         self.title("Relay")
         self.state("zoomed")
 
-        
-
-        
         self.current_user = None
         self.transcriptions = []
         self.requests = []
 
-        
         self.style.configure('.', font=('Helvetica', 14))
         self.option_add("*TButton.Padding", 10)
         self.option_add("*TEntry.Font", ("Helvetica", 14))
@@ -43,5 +41,5 @@ class App(tb.Window):
         self.frames[name].tkraise()
 
 if __name__ == "__main__":
- app = App()
- App.mainloop()
+    app = App()
+    app.mainloop()

@@ -1,5 +1,7 @@
 import ttkbootstrap as tb
 from ttkbootstrap.constants import *
+from ttkbootstrap.dialogs import Messagebox
+
 from auth import authorize
 
 class LoginPage(tb.Frame):
@@ -31,4 +33,5 @@ class LoginPage(tb.Frame):
             self.master.current_user = username
             self.master.show_screen("DashboardPage")
         else:
-            tb.Messagebox.show_error("Invalid username or password", "Login Failed")
+            Messagebox.show_error("Invalid username or password", "Login Failed")
+

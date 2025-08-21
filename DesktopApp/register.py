@@ -1,5 +1,6 @@
 import ttkbootstrap as tb
 from ttkbootstrap.constants import *
+from ttkbootstrap.dialogs import Messagebox
 from auth import register_user
 
 class RegisterPage(tb.Frame):
@@ -26,3 +27,13 @@ class RegisterPage(tb.Frame):
     def register(self):
         username = self.username_entry.get().strip()
         password = self.password_entry.get().strip()
+
+        if not username or not password:
+            Messagebox.show_warning("Please enter both username and password.", "Missing Information")
+            return
+
+        if register_user(username, password):
+            Messagebox.show_info("Account created successfully!", "Success")
+            self.master.show_screen("LoginPage")
+        else:
+            Messagebox.show_error("Username already exists. Please choose another.", "Registration Failed")
