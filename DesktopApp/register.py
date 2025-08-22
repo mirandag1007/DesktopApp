@@ -10,7 +10,7 @@ class RegisterPage(tb.Frame):
         container = tb.Frame(self)
         container.place(relx=0.5, rely=0.5, anchor="center")
 
-        tb.Label(container, text="Create Account", font=("Helvetica", 28, "bold"), bootstyle=PRIMARY).pack(pady=20)
+        tb.Label(container, text="Create Account", font=("Helvetica", 28, "bold"), style="Heading.TLabel").pack(pady=20)
 
         tb.Label(container, text="Username", font=("Helvetica", 16)).pack(pady=(10, 5))
         self.username_entry = tb.Entry(container, width=35, font=("Helvetica", 14))
@@ -21,8 +21,7 @@ class RegisterPage(tb.Frame):
         self.password_entry.pack()
 
         tb.Button(container, text="Register", bootstyle=SUCCESS, width=25, command=self.register).pack(pady=20)
-        tb.Button(container, text="Back to Login", bootstyle=INFO, width=25,
-                  command=lambda: master.show_screen("LoginPage")).pack()
+        tb.Button(container, text="Back to Login", bootstyle=INFO, width=25, command=lambda: master.show_screen("LoginPage")).pack()
 
     def register(self):
         username = self.username_entry.get().strip()

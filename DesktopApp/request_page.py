@@ -1,24 +1,43 @@
-from tkinter import *
+# request_page.py
+import ttkbootstrap as tb
+from ttkbootstrap.constants import *
 
-class RequestPage(Frame):
+class RequestPage(tb.Frame):
     def __init__(self, master):
         super().__init__(master)
-        Label(self, text="Post a Request", font=("Arial", 24)).pack(pady=20)
 
-        Label(self, text="Professor Name").pack()
-        self.prof_entry = Entry(self)
-        self.prof_entry.pack()
+        tb.Label(self, text="Post a Request", font=("Helvetica", 24, "bold")).pack(pady=20)
 
-        Label(self, text="Class Number").pack()
-        self.class_entry = Entry(self)
-        self.class_entry.pack()
+        form = tb.Frame(self)
+        form.pack()
 
-        Label(self, text="Room Number").pack()
-        self.room_entry = Entry(self)
-        self.room_entry.pack()
+        tb.Label(form, text="Professor Name").pack(anchor="w")
+        self.prof_entry = tb.Entry(form, width=35)  
+        self.prof_entry.pack(anchor="w", pady=(0, 8))
 
-        Button(self, text="Submit Request", command=self.submit_request).pack(pady=10)
-        Button(self, text="Back", command=lambda: master.show_screen("DashboardPage")).pack()
+        tb.Label(form, text="Class Number").pack(anchor="w")
+        self.class_entry = tb.Entry(form, width=35)  
+        self.class_entry.pack(anchor="w", pady=(0, 8))
+
+        tb.Label(form, text="Room Number").pack(anchor="w")
+        self.room_entry = tb.Entry(form, width=35)  
+        self.room_entry.pack(anchor="w", pady=(0, 12))
+
+        # Buttons: purple primary + purple outline (colors come from main.py styles)
+        buttons = tb.Frame(self)
+        buttons.pack(pady=10)
+
+        tb.Button(
+            buttons, text="Submit Request",
+            bootstyle=PRIMARY,  # solid purple
+            command=self.submit_request
+        ).pack(side="left", padx=6)
+
+        tb.Button(
+            buttons, text="Back",
+            bootstyle="primary-outline",  # purple outline
+            command=lambda: master.show_screen("DashboardPage")
+        ).pack(side="left", padx=6)
 
     def submit_request(self):
         request = {
