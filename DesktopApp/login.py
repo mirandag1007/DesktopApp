@@ -7,7 +7,7 @@ class LoginPage(tb.Frame):
     def __init__(self, master):
         super().__init__(master, padding=30)
 
-        # ✅ Make sure this page fills the window’s grid cell
+        # Make sure this page fills the window’s grid cell
         self.grid(row=0, column=0, sticky="nsew")
         self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure(0, weight=1)

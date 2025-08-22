@@ -16,21 +16,21 @@ TEXT_MUTED = "#94A3B8"
 
 class App(tb.Window):
     def __init__(self):
-        super().__init__(themename="darkly")
+        super().__init__(themename="darkly") # Using ttkbootstrap's dark theme for UI
 
         self.title("Relay")
         self.state("zoomed")
 
-        # ✅ Let the window’s grid expand fully
+        # Let the window’s grid expand fully
         self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure(0, weight=1)
 
-        # --- app state ---
+        # App State
         self.current_user = None
         self.transcriptions = []
         self.requests = []
 
-        # --- styling (no background overrides, just text/buttons) ---
+        # Text Styling
         style = self.style
         style.configure(".", font=("Helvetica", 14))
         style.configure("TLabel", foreground=TEXT_MAIN)
@@ -41,18 +41,13 @@ class App(tb.Window):
         self.option_add("*TButton.Padding", 12)
         self.option_add("*TEntry.Font", ("Helvetica", 14))
 
-        # Buttons
-        style.configure("Primary.TButton", background=ACCENT_PURPLE,
-                        foreground="white", font=("Helvetica", 12, "bold"))
-        style.map("Primary.TButton",
-                  background=[("active", ACCENT_PURPLE_ACTIVE),
-                              ("pressed", ACCENT_PURPLE_PRESSED)])
-        style.configure("primary.Outline.TButton", foreground=ACCENT_PURPLE,
-                        font=("Helvetica", 12))
-        style.map("primary.Outline.TButton",
-                  foreground=[("active", ACCENT_PURPLE_ACTIVE)])
+        # Button styles
+        style.configure("Primary.TButton", background=ACCENT_PURPLE, foreground="white", font=("Helvetica", 12, "bold"))
+        style.map("Primary.TButton", background=[("active", ACCENT_PURPLE_ACTIVE), ("pressed", ACCENT_PURPLE_PRESSED)])
 
-        # --- page registry ---
+        style.configure("primary.Outline.TButton", foreground=ACCENT_PURPLE, font=("Helvetica", 12))
+        style.map("primary.Outline.TButton", foreground=[("active", ACCENT_PURPLE_ACTIVE)])
+
         self.frames = {}
         for ScreenClass in (
             LoginPage,
@@ -64,12 +59,13 @@ class App(tb.Window):
         ):
             screen = ScreenClass(self)
             self.frames[ScreenClass.__name__] = screen
-            screen.grid(row=0, column=0, sticky="nsew")
+            screen.grid(row=0, column=0, sticky="nsew") # Put every screen in the same cell
 
+        # Start on the login page
         self.show_screen("LoginPage")
 
     def show_screen(self, name):
-        self.frames[name].tkraise()
+        self.frames[name].tkraise() # Raise selected screen to the top
 
 
 if __name__ == "__main__":
