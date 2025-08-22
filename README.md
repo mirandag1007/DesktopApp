@@ -11,6 +11,10 @@
 - GUI Framework: Tkinter
 - Database: SQLite 
 - Version Control: Git + GitHub
+- To run: please install first:
+   pip install ttkbootstrap
+  Then: python main.py 
+
   
 
 ## Desktop App Layout
