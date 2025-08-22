@@ -1,13 +1,11 @@
 import ttkbootstrap as tb
 from ttkbootstrap.constants import *
+from auth import authorize
 
 class LoginPage(tb.Frame):
     def __init__(self, master):
         super().__init__(master, padding=30)
-        
-      
 
-        # Create a container frame that will be centered
         container = tb.Frame(self)
         container.place(relx=0.5, rely=0.5, anchor="center")
 
@@ -22,10 +20,15 @@ class LoginPage(tb.Frame):
         self.password_entry.pack()
 
         tb.Button(container, text="Login", bootstyle=SUCCESS, width=25, command=self.login).pack(pady=20)
-        tb.Button(container, text="Go to Dashboard", bootstyle=INFO, width=25,
-                  command=lambda: master.show_screen("DashboardPage")).pack()
+        tb.Button(container, text="Create Account", bootstyle=INFO, width=25,
+                  command=lambda: master.show_screen("RegisterPage")).pack()
 
     def login(self):
-        username = self.username_entry.get()
-        self.master.current_user = username
-        self.master.show_screen("DashboardPage")
+        username = self.username_entry.get().strip()
+        password = self.password_entry.get().strip()
+
+        if authorize(username, password):
+            self.master.current_user = username
+            self.master.show_screen("DashboardPage")
+        else:
+            tb.Messagebox.show_error("Invalid username or password", "Login Failed")

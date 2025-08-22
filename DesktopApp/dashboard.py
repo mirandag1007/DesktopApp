@@ -10,3 +10,4 @@ class DashboardPage(Frame):
         Button(self, text="Post Request", command=lambda: master.show_screen("RequestPage")).pack(pady=5)
         Button(self, text="Browse Requests", command=lambda: master.show_screen("BrowseRequestsPage")).pack(pady=5)
         Button(self, text="Logout", command=lambda: master.show_screen("LoginPage")).pack(pady=5)
+        Button(self, text="Transcribe Audio", command=lambda: master.show_screen("TranscribePage")).pack(pady=5)

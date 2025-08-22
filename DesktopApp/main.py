@@ -5,21 +5,25 @@ from dashboard import DashboardPage
 from markdown_viewer import MarkdownViewerPage
 from request_page import RequestPage
 from browse_request import BrowseRequestsPage
+from register import RegisterPage
+from transcribe_page import TranscribePage
+from recording_page import RecordingPage
+
 
 class App(tb.Window):
     def __init__(self):
-        super().__init__(themename="cosmo")  # Try: cosmo, darkly, journal, lumen
+        super().__init__(themename="cosmo") 
         self.title("Relay")
         self.state("zoomed")
 
         
 
-        # Shared data
+        
         self.current_user = None
         self.transcriptions = []
         self.requests = []
 
-        #just for style 
+        
         self.style.configure('.', font=('Helvetica', 14))
         self.option_add("*TButton.Padding", 10)
         self.option_add("*TEntry.Font", ("Helvetica", 14))
@@ -27,10 +31,12 @@ class App(tb.Window):
         self.frames = {}
         for ScreenClass in (
             LoginPage,
-            DashboardPage,          
+            DashboardPage,
+            RegisterPage,
             MarkdownViewerPage,
             RequestPage,
-            BrowseRequestsPage
+            BrowseRequestsPage,
+	    TranscribePage
         ):
             screen = ScreenClass(self)
             self.frames[ScreenClass.__name__] = screen
