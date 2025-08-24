@@ -21,7 +21,9 @@
 
 # Project Structure
 
-```text
+# Project Structure
+
+<pre>
 SWE-project-root/
 │
 ├── app/                        
@@ -40,3 +42,4 @@ SWE-project-root/
 ├── requirements.txt            ← Python dependencies
 ├── README.md                   ← Project documentation
 └── .gitignore                  ← Git exclusions (e.g., *.db, __pycache__)
+</pre>
