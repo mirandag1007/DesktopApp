@@ -1,7 +1,7 @@
 # .env file for DesktopApp
 
 # OpenAI API Key (required for transcription/translation AI)
-OPENAI_API_KEY=a7c9c762d45d4dbee80443c6f40abef81ce45962
+OPENAI_API_KEY= e40b29abadc74267a7c3027bc23b032d
 
 # Database file path (SQLite)
 DATABASE_URL=users.db

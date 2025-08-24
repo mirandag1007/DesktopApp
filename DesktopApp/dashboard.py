@@ -7,14 +7,6 @@ class DashboardPage(tb.Frame):
     def __init__(self, master):
         super().__init__(master)
 
-
-        Button(self, text="Record Lecture", command=lambda: master.show_screen("RecordingPage")).pack(pady=5)
-        Button(self, text="View Transcriptions", command=lambda: master.show_screen("MarkdownViewerPage")).pack(pady=5)
-        Button(self, text="Post Request", command=lambda: master.show_screen("RequestPage")).pack(pady=5)
-        Button(self, text="Browse Requests", command=lambda: master.show_screen("BrowseRequestsPage")).pack(pady=5)
-        Button(self, text="Logout", command=lambda: master.show_screen("LoginPage")).pack(pady=5)
-        Button(self, text="Transcribe Audio", command=lambda: master.show_screen("TranscribePage")).pack(pady=5)
-
         # helper to navigate between screens
         def go(screen_name: str):
             if hasattr(master, "frames") and screen_name in master.frames:
@@ -28,7 +20,7 @@ class DashboardPage(tb.Frame):
 
         card_bg = get_card_bg()
 
-        
+        # ---------- top-right nav ----------
         nav = tb.Frame(self)
         nav.pack(side="top", fill="x", pady=(8, 4), padx=12)
 
@@ -42,12 +34,12 @@ class DashboardPage(tb.Frame):
         tb.Button(nav_right, text="Logout", bootstyle="primary-outline",
                   command=lambda: go("LoginPage")).pack(side="left")
 
-        
+        # ---------- page title ----------
         tb.Label(self, text="Dashboard", font=("Helvetica", 24, "bold")).pack(
             anchor="w", padx=20, pady=(10, 20)
         )
 
-        
+        # ---------- Your Notes card ----------
         notes_frame = tb.Frame(self, padding=20, bootstyle="secondary")
         notes_frame.pack(fill="x", padx=20, pady=(0, 30))
 
@@ -61,14 +53,14 @@ class DashboardPage(tb.Frame):
                   bootstyle=PRIMARY, width=22,
                   command=lambda: master.show_screen("RecordingPage")).pack(anchor="e", pady=(10, 0))
 
-        
+        # ---------- Connect header ----------
         connect_header = tb.Frame(self)
         connect_header.pack(fill="x", padx=20)
         tb.Label(connect_header, text="Connect", font=("Helvetica", 16, "bold")).pack(anchor="w")
         tb.Label(connect_header, text="Find other students or request help",
                  bootstyle="secondary").pack(anchor="w", pady=(0, 10))
 
-        
+        # ---------- Two card-style blocks ----------
         cards = tb.Frame(self)
         cards.pack(fill="x", padx=20, pady=(0, 20))
 

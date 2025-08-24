@@ -6,20 +6,7 @@ from markdown_viewer import MarkdownViewerPage
 from request_page import RequestPage
 from browse_request import BrowseRequestsPage
 from register import RegisterPage
-from transcribe_page import TranscribePage
-from recording_page import RecordingPage
-
-
-class App(tb.Window):
-    def __init__(self):
-        super().__init__(themename="cosmo") 
-        self.title("Relay")
-        self.state("zoomed")
-
-        
-
-        
-
+from recording import RecordingPage
 
 # Accent colors for buttons/text
 ACCENT_PURPLE = "#6C5CE7"
@@ -40,14 +27,9 @@ class App(tb.Window):
         self.grid_columnconfigure(0, weight=1)
 
         # App State
-
         self.current_user = None
         self.transcriptions = []
         self.requests = []
-
-        
-        self.style.configure('.', font=('Helvetica', 14))
-        self.option_add("*TButton.Padding", 10)
 
         # Text Styling
         style = self.style
@@ -58,7 +40,6 @@ class App(tb.Window):
         style.configure("Subheading.TLabel", font=("Helvetica", 20, "bold"))
 
         self.option_add("*TButton.Padding", 12)
-
         self.option_add("*TEntry.Font", ("Helvetica", 14))
 
         # Button styles
@@ -76,7 +57,7 @@ class App(tb.Window):
             MarkdownViewerPage,
             RequestPage,
             BrowseRequestsPage,
-	    TranscribePage
+            RecordingPage
         ):
             screen = ScreenClass(self)
             self.frames[ScreenClass.__name__] = screen

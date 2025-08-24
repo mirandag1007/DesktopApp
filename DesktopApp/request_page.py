@@ -47,3 +47,4 @@ class RequestPage(tb.Frame):
         }
         self.master.requests.append(request)
         self.master.show_screen("DashboardPage")
+
