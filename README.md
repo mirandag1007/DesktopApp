@@ -23,23 +23,27 @@
 
 # Project Structure
 
+# Project Structure
+
+# Project Structure
+
 <pre>
 SWE-project-root/
 │
 ├── app/                        
-│   ├── main.py                 ← Entry point for the app (equivalent to `page.tsx`)
-│   ├── database.py             ← Handles Database
+│   ├── main.py                 &larr; Entry point for the app (equivalent to `page.tsx`)
+│   ├── database.py             &larr; Handles Database
 │
 ├── screens/                    
-│   ├── dashboard.py            ← Dashboard view after login
-│   ├── login.py                ← Login/Signup screen
-│   └── post_request.py         ← Form for submitting a request
+│   ├── dashboard.py            &larr; Dashboard view after login
+│   ├── login.py                &larr; Login/Signup screen
+│   └── post_request.py         &larr; Form for submitting a request
 │
 ├── assets/                     
 │   ├── logo.png
 │   └── background.jpg
 │
-├── requirements.txt            ← Python dependencies
-├── README.md                   ← Project documentation
-└── .gitignore                  ← Git exclusions (e.g., *.db, __pycache__)
+├── requirements.txt            &larr; Python dependencies
+├── README.md                   &larr; Project documentation
+└── .gitignore                  &larr; Git exclusions (e.g., *.db, __pycache__)
 </pre>
